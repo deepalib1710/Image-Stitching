@@ -27,7 +27,7 @@ Raw Images → Resize to 500×500 → Convert to Grayscale
 
 ### **Step 2: Find Distinctive Points (SIFT)**
 
-**What is SIFT?** A feature detection algorithm that finds unique points in images that remain recognizable even if the image is rotated, scaled, or has different lighting.
+**What is SIFT?** Scale-Invariant Feature Transform is a feature detection algorithm that finds unique points in images that remain recognizable even if the image is rotated, scaled, or has different lighting.
 
 **How it works:**
 1. **Create scale pyramids** - Generate blurry versions at different zoom levels
