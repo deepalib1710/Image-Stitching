@@ -122,71 +122,11 @@ if error == cv2.Stitcher_OK:
 
 ---
 
-## 📊 Complexity Analysis
-
-| Operation | Time | Memory |
-|-----------|------|--------|
-| SIFT Detection | O(n log n) per image | O(k) keypoints |
-| Feature Matching | O(k²) | O(k) |
-| Homography (RANSAC) | O(iterations) | O(1) |
-| Warping & Blending | O(width × height) | O(output size) |
-
-**Overall:** Polynomial time, scales with image resolution
-
----
-
 ## 🚀 Requirements
 
 ```bash
 pip install opencv-contrib-python numpy imutils
 ```
-
-### **System Requirements**
-- Python 3.6+
-- 2GB RAM minimum (for high-res images)
-- CPU with multi-core support (for faster processing)
-
----
-
-## 📁 How to Use
-
-1. **Prepare images:**
-   - Place overlapping photos in a folder
-   - Photos should have 30-50% overlap
-   - Similar exposure/white balance helps
-
-2. **Update path:**
-   ```python
-   image_paths = glob.glob(r'path/to/your/images/*.jpg')
-   ```
-
-3. **Run:**
-   ```bash
-   python imagestitch.py
-   ```
-
-4. **Get output:**
-   - Check `stitchedOutput.jpg` in current directory
-
----
-
-## ⚠️ Common Issues & Fixes
-
-| Error | Cause | Solution |
-|-------|-------|----------|
-| `ERR_NEED_MORE_IMGS` | Too few matching points | Use clearer, sharper images |
-| `ERR_HOMOGRAPHY_EST_FAIL` | Insufficient distinct features | Ensure images have texture/details |
-| `ERR_CAMERA_PARAMS_ADJUST_FAIL` | Camera moved too much | Keep camera level, move sideways |
-| Black borders in output | Perspective warping | Use `cv2.copyMakeBorder()` to clean up |
-
----
-
-## 💡 Key Concepts Explained
-
-**Why not just concatenate images?**
-- ❌ Overlapping regions would be visible
-- ❌ No smooth blending
-- ❌ Different perspectives won't align
 
 **Why feature matching instead of pixel-by-pixel?**
 - ✅ Works with rotation/scaling
@@ -201,39 +141,3 @@ pip install opencv-contrib-python numpy imutils
 - ✅ 95%+ accuracy in practice
 
 ---
-
-## 🎯 What You Learn
-
-✅ Scale-space image processing (Gaussian pyramids)
-✅ Feature detection & descriptor extraction
-✅ Geometric image transformations (homography)
-✅ Robust estimation techniques (RANSAC)
-✅ Image blending & compositing
-✅ Computer vision workflow design
-
----
-
-## 📚 References
-
-- Lowe, D. G. (2004) - SIFT: Distinctive Image Features from Scale-Invariant Keypoints
-- Fischler & Bolles (1981) - RANSAC: Random Sample Consensus
-- OpenCV Documentation: https://docs.opencv.org/
-
----
-
-## 🎨 Example Use Cases
-
-| Use Case | Advantage |
-|----------|-----------|
-| **Panoramic Photos** | Create 180° views from multiple phones |
-| **Satellite Maps** | Stitch aerial photos for large area coverage |
-| **Medical Imaging** | Combine histology slide scans into mosaics |
-| **Augmented Reality** | Generate background textures |
-| **3D Reconstruction** | First step of photogrammetry pipeline |
-
----
-
-**Author:** Deepali B  
-**Created:** September 2024  
-**Language:** Python 3.x  
-**Status:** ✅ Fully Functional | 📖 Well Documented
